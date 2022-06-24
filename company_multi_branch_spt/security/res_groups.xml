@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="group_company_branch_spt" model="res.groups">
+        <field name="name">Manage Branches </field>
+        <field name="category_id" ref="base.module_category_usability"/>
+    </record>
+    <data noupdate="1">
+        <record id="sale_multi_branch_spt" model="ir.rule">
+            <field name="name">Sale Manage Branches</field>
+            <field name="model_id" ref="sale.model_sale_order"/>
+            <field name="global" eval="True"/>
+            <field name="domain_force">['|',('branch_id','=',False),('branch_id','in',user.branch_ids.ids)]</field>
+
+        </record>
+        <record id="purchase_multi_branch_spt" model="ir.rule">
+            <field name="name">Purchase Manage Branches</field>
+            <field name="model_id" ref="purchase.model_purchase_order"/>
+            <field name="global" eval="True"/>
+            <field name="domain_force">['|',('branch_id','=',False),('branch_id','in',user.branch_ids.ids)]</field>
+        </record>
+        <record id="invoice_multi_branch_spt" model="ir.rule">
+            <field name="name">Invoice Manage Branches</field>
+            <field name="model_id" ref="account.model_account_move"/>
+            <field name="global" eval="True"/>
+            <field name="domain_force">['|',('branch_id','=',False),('branch_id','in',user.branch_ids.ids)]</field>
+        </record>
+        <record id="picking_multi_branch_spt" model="ir.rule">
+            <field name="name">Picking Manage Branches</field>
+            <field name="model_id" ref="stock.model_stock_picking"/>
+            <field name="global" eval="True"/>
+            <field name="domain_force">['|',('branch_id','=',False),('branch_id','in',user.branch_ids.ids)]</field>
+        </record>
+        <record id="crm_multi_branch_spt" model="ir.rule">
+            <field name="name">Crm Manage Branches</field>
+            <field name="model_id" ref="crm.model_crm_lead"/>
+            <field name="global" eval="True"/>
+            <field name="domain_force">['|',('branch_id','=',False),('branch_id','in',user.branch_ids.ids)]</field>
+        </record>
+        <record id="stock_warehouse_multi_branch_spt" model="ir.rule">
+            <field name="name">Warehouse Manage Branches</field>
+            <field name="model_id" ref="stock.model_stock_warehouse"/>
+            <field name="global" eval="True"/>
+            <field name="domain_force">['|',('branch_id','=',False),('branch_id','in',user.branch_ids.ids)]</field>
+        </record>
+        <record id="stock_location_multi_branch_spt" model="ir.rule">
+            <field name="name">Crm Manage Branches</field>
+            <field name="model_id" ref="stock.model_stock_location"/>
+            <field name="global" eval="True"/>
+            <field name="domain_force">['|',('branch_id','=',False),('branch_id','in',user.branch_ids.ids)]</field>
+        </record>
+        <record id="payment_multi_branch_spt" model="ir.rule">
+            <field name="name">Payment Manage Branches</field>
+            <field name="model_id" ref="account.model_account_payment"/>
+            <field name="global" eval="True"/>
+            <field name="domain_force">['|',('branch_id','=',False),('branch_id','in',user.branch_ids.ids)]</field>
+        </record>
+        <record id="production_lot_multi_branch_spt" model="ir.rule">
+            <field name="name">Production Lot Manage Branches</field>
+            <field name="model_id" ref="stock.model_stock_production_lot"/>
+            <field name="global" eval="True"/>
+            <field name="domain_force">['|',('branch_id','=',False),('branch_id','in',user.branch_ids.ids)]</field>
+        </record>
+        <record id="move_line_multi_branch_spt" model="ir.rule">
+            <field name="name">Move Line Manage Branches</field>
+            <field name="model_id" ref="account.model_account_move_line"/>
+            <field name="global" eval="True"/>
+            <field name="domain_force">['|',('branch_id','=',False),('branch_id','in',user.branch_ids.ids)]</field>
+        </record>
+        <record id="partner_multi_branch_spt" model="ir.rule">
+            <field name="name">Partner Manage Branches</field>
+            <field name="model_id" ref="base.model_res_partner"/>
+            <field name="global" eval="True"/>
+            <field name="domain_force">['|',('branch_id','=',False),('branch_id','in',user.branch_ids.ids)]</field>
+        </record>
+        <record id="company_multi_branch_spt" model="ir.rule">
+            <field name="name">Company Manage Branches</field>
+            <field name="model_id" ref="base.model_res_company"/>
+            <field name="global" eval="True"/>
+            <field name="domain_force">['|',('branch_id','=',False),('branch_id','in',user.branch_ids.ids)]</field>
+        </record>
+        <record id="journal_multi_branch_spt" model="ir.rule">
+            <field name="name">journal Manage Branches</field>
+            <field name="model_id" ref="account.model_account_journal"/>
+            <field name="global" eval="True"/>
+            <field name="domain_force">['|',('branch_id','=',False),('branch_id','in',user.branch_ids.ids)]</field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_payment_receipt_document_extend_spt" inherit_id="account.report_payment_receipt_document">
+        <xpath expr="//div[hasclass('row')]/div[1]" position="after">
+            <t t-if="o.branch_id">
+                <strong>   &#160; &#160;&#160;    Branch: </strong>
+                <span t-field="o.branch_id.display_name" />
+            </t>
+        </xpath>
+
+
+    </template>
+
+</odoo>

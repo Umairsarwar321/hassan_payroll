@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="stock_quant_branch_tree_view_inherit_spt" model="ir.ui.view">
+        <field name="name">stock.quant.branch.tree.view.inherit.spt</field>
+        <field name="model">stock.quant</field>
+        <field name="inherit_id" ref="stock.view_stock_quant_tree_editable"/>
+        <field name="groups_id" eval="[(4, ref('company_multi_branch_spt.group_company_branch_spt'))]"/>
+        <field name="arch" type="xml">
+            <field name="location_id" position="after">
+                <field name="branch_id" required="1"/>
+            </field>
+        </field>
+    </record>
+    <record id="stock_quant_branch_search_view_inherit_spt" model="ir.ui.view">
+        <field name="name">stock.quant.branch.search.view.inherit.spt</field>
+        <field name="model">stock.quant</field>
+        <field name="inherit_id" ref="stock.quant_search_view"/>
+        <field name="groups_id" eval="[(4, ref('company_multi_branch_spt.group_company_branch_spt'))]"/>
+        <field name="arch" type="xml">
+            <field name="location_id" position="after">
+
+                <field name="branch_id"/>
+            </field>
+            <!-- <filter name="locationgroup" position="after">
+                <filter string='Branches' name="branch" domain="[]" context="{'group_by': 'branch_id'}" groups="stock.group_company_branch_spt"/>
+
+            </filter> -->
+            <xpath expr="//filter[@name='locationgroup']" position="before">
+                <filter string='Branches' name="branch" domain="[]" context="{'group_by': 'branch_id'}"/>
+
+            </xpath>
+
+        </field>
+    </record>
+
+    <record model="ir.actions.server" id="stock.action_view_quants"> <!-- Menu + python -->
+        <field name="name">Inventory</field>
+        <field name="model_id" ref="stock.model_stock_quant"/>
+        <field name="state">code</field>
+        <field name="code">
+            action = model.with_context(
+                search_default_internal_loc=1,
+                search_default_branch=1,
+                search_default_productgroup=1,
+                search_default_locationgroup=1,
+            ).action_view_quants()
+        </field>
+    </record>
+</odoo>
